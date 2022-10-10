@@ -142,3 +142,30 @@ function DurTime(e) {
   // change duration DOM
   durTime.innerHTML = min_d + ":" + sec_d;
 }
+
+// Event listeners
+playBtn.addEventListener("click", () => {
+  const isPlaying = musicContainer.classList.contains("play");
+
+  if (isPlaying) {
+    pauseSong();
+  } else {
+    playSong();
+  }
+});
+
+// Change song
+prevBtn.addEventListener("click", prevSong);
+nextBtn.addEventListener("click", nextSong);
+
+// Time/song update
+audio.addEventListener("timeupdate", updateProgress);
+
+// Click on progress bar
+progressContainer.addEventListener("click", setProgress);
+
+// Song ends
+audio.addEventListener("ended", nextSong);
+
+// Time of song
+audio.addEventListener("timeupdate", DurTime);
